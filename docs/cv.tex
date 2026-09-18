@@ -1,0 +1,134 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=0in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+
+% ---------- Colors (matched to portfolio site theme) ----------
+\definecolor{brandbrown}{HTML}{A9704F}
+\definecolor{brandtan}{HTML}{D9A679}
+\definecolor{lightbg}{HTML}{FBE9E0}
+\definecolor{cardbg}{HTML}{FDF3EC}
+\definecolor{textdark}{HTML}{4A3C31}
+\definecolor{textmuted}{HTML}{8A7362}
+
+\pagestyle{empty}
+\renewcommand{\familydefault}{\sfdefault}
+\color{textdark}
+
+% ---------- Section headings (custom, minipage-safe: avoids titlesec's
+% float-based \section mechanism, which misbehaves inside minipages) ----------
+\newcommand{\cvsection}[1]{%
+  \par\vspace{4pt}{\color{brandbrown}\large\bfseries #1}\par\vspace{2pt}%
+  \textcolor{brandtan!60}{\rule{\linewidth}{1.2pt}}\par\vspace{6pt}%
+}
+
+\newcommand{\entry}[3]{%
+  \noindent\begin{minipage}[t]{0.66\linewidth}\raggedright\textbf{#1}\end{minipage}%
+  \hfill\begin{minipage}[t]{0.32\linewidth}\raggedleft{\small\color{textmuted}#2}\end{minipage}\\[2pt]
+  {\small\color{textmuted}\textit{#3}}\par\vspace{6pt}
+}
+
+\newcommand{\skillbar}[2]{%
+  \noindent{\small #1}\\[3pt]
+  \noindent{\color{lightbg}\rule{\linewidth}{6pt}}\hspace{-\linewidth}{\color{brandtan}\rule{#2\linewidth}{6pt}}\\[8pt]
+}
+
+\begin{document}
+
+% ================= HEADER =================
+\noindent
+\colorbox{lightbg}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}
+  \vspace{18pt}
+  \begin{minipage}[c]{0.98\linewidth}
+    {\Huge\bfseries\color{brandbrown} Maide Oskay}\\[6pt]
+    {\large\color{textmuted} Software Engineering Student}\\[10pt]
+    \small
+    \begin{minipage}[t]{0.48\linewidth}\raggedright
+      $\bullet$~Berlin, Germany\\[4pt]
+      $\bullet$~+49 15510 XXXXX
+    \end{minipage}%
+    \begin{minipage}[t]{0.5\linewidth}\raggedright
+      $\bullet$~maideoskay00@gmail.com\\[4pt]
+      $\bullet$~12 May 2000, Ayvalık/Turkey
+    \end{minipage}
+  \end{minipage}
+  \vspace{18pt}
+  \end{minipage}%
+}
+
+\vspace{18pt}
+
+% ================= TWO COLUMN BODY =================
+\noindent
+\begin{minipage}[t]{0.47\linewidth}
+
+\cvsection{Education}
+\entry{Gisma University of Applied Sciences}{10/2025 -- Present}{BEng -- Software Engineering}
+\entry{Övgü Terzibaşıoğlu Anadolu Lisesi}{June 2018}{Secondary School Diploma}
+
+\vspace{6pt}
+\cvsection{Skills}
+\skillbar{SQL}{0.85}
+\skillbar{Python}{0.55}
+\skillbar{Adobe}{0.65}
+\skillbar{MS Office}{0.90}
+
+\vspace{6pt}
+\cvsection{Languages}
+\small
+Turkish -- Native\\
+English -- C1 (Pearson UKVI 70/90)\\
+German -- B1 (TELC 257/300)\\
+French -- A2 (Busuu 92/100)
+
+\vspace{6pt}
+\cvsection{Hobbies}
+\small Travel \quad$\cdot$\quad Photography \quad$\cdot$\quad Food \& Cooking
+
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.47\linewidth}
+
+\cvsection{Projects}
+
+\colorbox{cardbg}{\begin{minipage}{0.95\linewidth}\vspace{4pt}
+\textbf{Artist Platform Website} \hfill {\small\color{textmuted}07/2026 -- Ongoing}\\[2pt]
+{\small
+\begin{itemize}[leftmargin=14pt,itemsep=1pt,topsep=2pt]
+  \item Customer service support features
+  \item AI-based recommendation algorithm
+  \item Platform management support tools
+\end{itemize}}
+\vspace{2pt}\end{minipage}}
+
+\vspace{6pt}
+\colorbox{cardbg}{\begin{minipage}{0.95\linewidth}\vspace{4pt}
+\textbf{Social Media Management} \hfill {\small\color{textmuted}02/2026 -- Ongoing}\\[2pt]
+{\small
+\begin{itemize}[leftmargin=14pt,itemsep=1pt,topsep=2pt]
+  \item Photoshop editing and photo polishing
+  \item Content creation and scheduling
+  \item Engagement data analysis
+\end{itemize}}
+\vspace{2pt}\end{minipage}}
+
+\vspace{6pt}
+\colorbox{cardbg}{\begin{minipage}{0.95\linewidth}\vspace{4pt}
+\textbf{Personal Portfolio Website} \hfill {\small\color{textmuted}08/2026}\\[2pt]
+{\small
+\begin{itemize}[leftmargin=14pt,itemsep=1pt,topsep=2pt]
+  \item Designed visuals in Photoshop
+  \item Analyzed content structure and layout
+  \item Built and published this CV
+\end{itemize}}
+\vspace{2pt}\end{minipage}}
+
+\end{minipage}
+
+\end{document}
