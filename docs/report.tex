@@ -1,0 +1,156 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks,colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+
+\definecolor{brandbrown}{HTML}{A9704F}
+\titleformat{\section}{\normalfont\Large\bfseries\color{brandbrown}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\vspace{-1cm}\textbf{Computer Science Portfolio}\\[4pt]\large Project Report}
+\author{Maide Oskay}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+\vspace{-0.5cm}
+
+\section*{Links}
+\begin{itemize}[leftmargin=1.2cm]
+  \item \textbf{Portfolio website:} \url{https://maidesource.github.io}
+  \item \textbf{GitHub repository:} \url{https://github.com/maidesource/maidesource.github.io}
+\end{itemize}
+
+\section{Introduction}
+This report accompanies the computer science portfolio I built for a university course
+assignment, which simulates preparing a portfolio for a working student position application.
+The portfolio consists of a personal website hosted with GitHub Pages
+and its corresponding public GitHub repository, which together present my education, technical
+skills, and ongoing projects, alongside a LaTeX-typeset curriculum vitae. This document explains
+how the portfolio is structured, the reasoning behind its design, the tools used to build it, and
+a reflection on its current strengths, limitations, and planned improvements.
+
+\section{Repository and Website Structure}
+The repository is named \texttt{maidesource.github.io}, which GitHub automatically recognises as
+a user site and serves directly from the \texttt{main} branch at
+\url{https://maidesource.github.io}. The repository root is kept flat and predictable:
+
+\begin{itemize}
+  \item \texttt{index.html}: the single-page website, containing markup for the header, About,
+        Education, Projects, and Skills sections, and the footer.
+  \item \texttt{styles.css}: all visual styling, including the color palette, typography,
+        spacing, and the card-based layout used for project entries.
+  \item \texttt{script.js}: a small script that enables smooth scrolling when the navigation
+        links are clicked.
+  \item \texttt{assets/}: the profile photograph used in the page header.
+  \item \texttt{docs/}: the compiled CV (\texttt{cv.pdf}) together with its LaTeX source
+        (\texttt{cv.tex}), so the CV can be regenerated or edited without leaving the repository.
+  \item \texttt{projects/}: documentation of the technical exercise showcased in the
+        portfolio. At this stage, the website itself is treated as the featured project, and this
+        folder explains why and how it was built (see \texttt{projects/README.md}).
+  \item \texttt{README.md}: a top-level description of the repository's purpose and layout for
+        anyone visiting the project on GitHub.
+\end{itemize}
+
+On the website itself, the navigation bar links to in-page sections (About, Projects, Skills)
+using anchor links, and to the CV, which opens the PDF stored in \texttt{docs/}. This keeps the
+whole experience of browsing the site and reading the CV inside a single, coherent repository,
+rather than splitting content across external services.
+
+\section{Design Decisions}
+Several deliberate choices shaped the final result:
+
+\begin{itemize}
+  \item \textbf{Single-page layout.} A hiring manager should be able to see education, skills,
+        and projects within a few seconds of scrolling, without navigating through multiple
+        pages. A single page with anchored sections keeps the site quick to scan while still
+        feeling organised.
+  \item \textbf{Consistent visual identity.} The color palette (warm terracotta and beige tones)
+        was carried over from my personal CV design so that the website and CV are immediately
+        recognisable as belonging to the same person and brand.
+  \item \textbf{Card-based project entries.} Each project is presented in its own visually
+        distinct card with a title, date range, and bullet points. This mirrors how the same
+        content is organised in the CV, so a reader who has seen one recognises the same
+        information in the other.
+  \item \textbf{Minimal dependencies.} The site intentionally avoids CSS or JavaScript
+        frameworks. For a page of this size and complexity, a framework would add
+        download weight and hide the underlying HTML/CSS/JS skills that the portfolio is meant to
+        demonstrate in the first place.
+  \item \textbf{Version-controlled CV.} Rather than treating the CV as an external, opaque PDF,
+        its LaTeX source lives in the same repository. This makes the CV auditable, diffable, and
+        easy to update the same way the rest of the site is updated: edit, commit, push.
+\end{itemize}
+
+\section{Tools and Technologies}
+\begin{itemize}
+  \item \textbf{HTML5 and CSS3} for the page structure and styling, using semantic elements
+        (\texttt{header}, \texttt{main}, \texttt{section}, \texttt{footer}) and Flexbox for
+        layout.
+  \item \textbf{Vanilla JavaScript (ES6)} for the smooth-scroll navigation behaviour, with no
+        external libraries.
+  \item \textbf{Git and GitHub} for version control, and \textbf{GitHub Pages} for hosting and
+        continuous deployment: every push to \texttt{main} automatically republishes the live
+        site.
+  \item \textbf{LaTeX} (compiled with \texttt{pdflatex} on TeX Live) for typesetting the CV,
+        allowing precise control over layout and easy long-term maintenance as a plain-text
+        source file.
+  \item A Linux terminal (Fedora) with \texttt{nano} was used throughout for editing files and
+        running Git commands, reinforcing familiarity with a command-line development workflow.
+\end{itemize}
+
+\section{Reflection}
+
+\subsection{Strengths}
+\begin{itemize}
+  \item The site is lightweight and loads quickly, since it has no external framework
+        dependencies.
+  \item Content, styling, and behaviour are cleanly separated into
+        \texttt{index.html}/\texttt{styles.css}/\texttt{script.js}, which keeps the codebase easy
+        to read and extend.
+  \item The CV is reproducible and version-controlled rather than being a static, unexplained
+        binary file.
+  \item The visual identity is consistent across the website and CV, giving a professional and
+        cohesive impression.
+  \item The deployment pipeline is simple and reliable: GitHub Pages removes the need for any
+        separate hosting setup.
+\end{itemize}
+
+\subsection{Weaknesses}
+\begin{itemize}
+  \item The layout is not yet fully responsive; it has not been adapted with media queries for
+        small screens, so the experience on mobile devices is not optimised.
+  \item The \texttt{projects/} folder currently documents the portfolio site itself rather than a
+        separate body of coding exercises, since I do not yet have additional finished technical
+        projects to include.
+  \item There is no automated testing, linting, or build process; the site is edited and deployed
+        manually.
+  \item No accessibility audit (colour contrast, screen-reader behaviour) has been performed yet.
+\end{itemize}
+
+\subsection{Planned Improvements}
+\begin{itemize}
+  \item Add responsive, mobile-first CSS using media queries so the site adapts cleanly to
+        smaller screens.
+  \item Populate \texttt{projects/} with additional, independent technical exercises (small
+        scripts, algorithms, or coursework projects) as they are completed.
+  \item Introduce basic automated checks (e.g. an HTML/CSS validator or a Lighthouse
+        accessibility and performance audit) as part of the development workflow.
+  \item Improve SEO and shareability with meta tags such as an Open Graph description and page
+        summary.
+  \item Consider a short "notes" or "learning log" section documenting technical topics studied
+        during my degree, to keep the portfolio active between larger projects.
+\end{itemize}
+
+\section{Conclusion}
+The portfolio in its current form fulfils its core purpose: it presents my background, skills,
+and ongoing projects clearly, is fully version-controlled, and is publicly accessible through
+GitHub Pages. Its main limitations, namely a thin project section and a non-responsive layout,
+are well understood and have a concrete improvement plan, which I intend to carry out as I
+complete further coursework and personal projects.
+
+\end{document}
